@@ -7,6 +7,7 @@ from selenium.webdriver.support.select import Select
 from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
+
 class TestSimple:
     def setup_method(self, method):
         self.driver = webdriver.Chrome()
@@ -40,7 +41,7 @@ class TestSimple:
 
         self.driver.find_element(By.XPATH, "//button[@aria-label='Consent']").click()
 
-        firstName = "Tamás"
+        firstName = "Gábor"
         lastName = "Nyilas"
         email = "gabor.nyilas@codecool.com"
         gender = "Male"
@@ -109,15 +110,15 @@ class TestSimple:
         assert name_element.text == f"{firstName} {lastName}"
 
         email_element = self.driver.find_element(By.XPATH,
-                                                "//td[normalize-space()='Student Email']//following-sibling::td")
+                                                 "//td[normalize-space()='Student Email']//following-sibling::td")
         assert email_element.text == email
 
         gender_element = self.driver.find_element(By.XPATH,
-                                                 "//td[normalize-space()='Gender']//following-sibling::td")
+                                                  "//td[normalize-space()='Gender']//following-sibling::td")
         assert gender_element.text == gender
 
         address_element = self.driver.find_element(By.XPATH,
-                                                "//td[normalize-space()='Address']//following-sibling::td")
+                                                   "//td[normalize-space()='Address']//following-sibling::td")
         assert address_element.text == f"{address1} {address2}"
 
         time.sleep(3)
@@ -128,6 +129,7 @@ class TestSimple:
         self.driver.find_element(By.XPATH, "//input[@id='check1']").click()
         # self.driver.find_element(By.XPATH, "//label[normalize-space()='Option 1']//input[@type='checkbox']").click()
 
-        assert self.driver.find_element(By.XPATH, "//label[normalize-space()='Option 1']//input[@type='checkbox']").is_selected()
+        assert self.driver.find_element(By.XPATH,
+                                        "//label[normalize-space()='Option 1']//input[@type='checkbox']").is_selected()
 
         time.sleep(3)
